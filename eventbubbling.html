@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head></head>
+<body>
+<ul id="mainList">
+<li>list-1</li>
+<li>list-2</li>
+<li>list-3</li>
+<li>list-4</li>
+<li>list-5</li>
+</ul>
+<div id="parentContainer">
+	<a href="http://www.google.com" id="childContainer">
+		Click child!
+	</a>
+</div>
+<script>
+var p = document.getElementById('parentContainer'),
+    c = document.getElementById('childContainer');
+  p.addEventListener('click',function(){
+  	console.log('parent clicked');
+  }); //Enable capturing phase
+  c.addEventListener('click',function(e){
+  	e.preventDefault();//This will stop doing its own intended action, say href, it'll NOT be executed at all....
+  	e.stopPropagation();//This will stop propagating to parent click-event
+  	console.log('child clicked');
+  }); //Enable capturing phase
+  
+/* 
+
+- Event capturing will start from parent to child.
+- Event bubbling will start from child to parent
+- All modern browsers, supports both capturing phase as well as bubbling phase
+- By default it'll always be bubbling phase, 
+- event.preventDefault ==>  Stop the action on click of that element
+- event.stopPropagation ==> Stop event bubbling
+
+*/
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,466 @@
+Cover these concepts thoroughly
+
+- JS Prototype
+- ES-6 coding
+
+
+Redux (its a state management tools for JS applications) 
+
+- Store (Reducer, State) - 
+  -  set the state value in the store, in a giant js object, we dont mute that, instead 
+  - Store is immutable (not changeable)
+  - Create a brand new store object (which is so called reducers) to back-track
+  - Provider component, keep changing it if there are any change in store
+  - 
+
+- Reducer (state, action)
+- Subscribe
+- Dispatch
+
+- Main objective of redux is to store the entire state of an application in one common store
+- avoid props to child components
+- Complicated data to handle which keeps updating over the period of time
+- 
+
+
+
+
+==================================================================================================================
+
+Material UI  ::
+
+
+
+==================================================================================================================
+
+Babel - transpiler from ES-6 to es-5 
+
+===================================================================================================================
+
+
+React Initial Set-up :: 
+
+1) npm init
+2) npm install react react-dom --save
+3) sudo npm install webpack  webpack-dev-server babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-2 --save-dev
+4) npm start
+5) npm install webpack-cli --save-dev
+6) npm i prop-types --save(to define the data types)
+Make sure in web-pack config, module --> rules instead of defining module --> loader
+7) npm install --save react-router (to install react router)
+8) npm install react-router@3.0.5 (For downloading the exact react router, was gettting exceptions)
+9) npm install --save material-ui-next (For material UI plugin )
+
+===================================================================================================================
+
+
+Lifecycle of components
+
+1) ComponentwillMount - Immediately before initial rendering
+2) ComponentdidMount - Immediately after initial rendering
+3) Componentwillreceiveprops - When component receives new props
+4) shouldComponentUpdate = Before rendering, after receiving new props or state
+5) componentwillUpdate - Before rendering, after receiving new props or state
+6) componentdidUpdate - After components updates are flushed into DOM 
+7) componentwillUnmount - Immediately before removing component from DOM
+
+===================================================================================================================
+ 
+
+
+
+git ignore file  ::
+
+/node_modules
+/dist
+/.idea
+/npm-debug.log
+
+
+- 
+
+Git commands
+Go to the folder 
+git init
+git add .
+git commit -m "comments"
+git push -u origin https://github.com/svsnarayanan/reactpoc.git
+
+===================================================================================================================
+
+Things to learn ::
+
+- promise
+- recursions
+- Closures
+- array
+- string manipulation
+- loop array using map, filter, sort
+- JSON
+- Loop through 3 level nested json object
+- Data structure concepts
+- Event bubbling, how to handle?
+- React Material UI
+- React Redux
+
+Data structures ::
+
+Stacks
+Queues
+Linked Lists
+Trees
+Hashing
+Heaps
+Graph
+Types of search 
+
+Algorithms
+
+- Analysis
+- Sorting and searching techniques
+- Divide and conquer
+- Greedy 
+- Backtracking
+- Dynamic programming
+- Complexity classes
+
+
+Books :: 
+
+- Algorithm Design Manual 
+
+
+
+==================================================================================================================
+Data Structures ::
+
+- Data-structures are classified into 2
+   a) Contiguous - Are single slab memory , Eg : Array, matrices, heap & hash tables
+   b) Linked data strucures  -Distinct chunk of memory bound together by pointers (Lists, trees, graph)
+
+- Arrays ::
+
+- Arrays are the contiguous data structure, 
+- It can be located by its index or address
+- Eg :: In a Lane, there are n number of houses, each house holds a house # (which is an index / memory)
+Advantages of contiguously allocated arrays ::
+
+- Constant time access given the index
+- Space efficiency
+- Memory  locality
+
+Dis-Adv :: 
+
+- When we try to insert a new element in an array, (n/2 +1)
+
+Pointers & Linked data-structures ::
+
+- Pointers represents the address of a location in memory 
+
+eg :: var a=10 (pointer value is 1001) 
+ 		  *a = 10 (pointer to the item)
+          &a=1001 (denotes the Address)
+      var b = 11 (pointer value is 1002)
+
+
+- A "singly-linked-list", each node contains a pointer filed to at least one other node
+- Basic operations of linked list Searching, Deletion, Insertion 
+- A "doubly-linked-list", each node points to both its predecessor and successor elements
+- Insertion, we do it at the first item in the list
+- For Search & Delete , use recursive function 
+
+Adv : 
+
+- Overflow on linked structures can never occur, unless if the memory is full
+- Insertion, Deletion operations are simpler compared to array
+- Moving the pointers is easier & faster 
+- Widely used in divide-and-conquer algorithms like Quick sort, Binary search
+
+Dis adv :: 
+
+- Linked structure requires extra space for storing the pointer fields
+- Linked list cannot allow random access, we have to traverse linearly
+
+
+Stacks and Queues ::
+
+- Stacks - pile of plates , LiFo (last-in-first-out) [ push (x,s) => Push X above s; pop(s) => remove the top of the item s ] 
+- Queues - Train ticket counter, FiFo (First-in-first-out), 
+   En-queue (x,q) - add x behind q
+   De-queue(q) - Remove the item before q (say x-q-r-a, when we de-queue(q) => x-q-a)
+
+
+Programming on Stack ::
+
+var l =[];
+var w = "bob";
+var rw = "";
+
+for (var i=0;i<w.length;i++){
+	l.push(w[i]);
+	console.log('value of l :: ' + l);
+}
+
+for (var i=0; i<w.length;i++){
+	rw +=l.pop();
+	console.log('rw :: ' + rw) ;
+}
+
+if(w == rw) {console.log('palindrome word');} else{console.log('its not a palindrome word');}
+
+Actual push and POP implementation in JS using STACK 
+
+var Stack = function(){
+	this.idx=0; //Index to keep the count in the stack
+	this.storeValue = {}; //Object to hold the value
+	this.push = function(val){
+		/* This function is used to add an item the stack */
+		this.storeValue[this.idx] = val;
+		this.idx++;
+		console.log('index value at push ' + this.idx);
+	}
+	this.pop = function(){
+			/* This function is used to remove the last item in the stack */
+			if(this.idx === 0){return undefined;}
+			this.idx--;
+			console.log('Index value after pop'+this.idx);
+			var resultSet = this.storeValue[this.idx];
+			delete this.storeValue[this.idx];
+			return resultSet;
+	}
+	this.peek =function(){
+		/* This function is used to return the top most item in the stack */
+		return this.storeValue[this.idx-1];
+
+	}
+	this.size = function(){
+	return this.idx;
+	}
+}
+
+var oStack = new Stack();
+oStack.push(1);
+console.log(oStack.peek());
+console.log(oStack.pop());
+console.log(oStack.peek());
+
+Post-fix notation Coding (Reverse polish notation ) :: 
+
+var exp = '23*54*+9-';
+var checkNumbersRegex = /^\d+$/;
+var operators =["+","-","*","%","/"];
+var litem = [];
+
+function evaluatePostfix (exp) {
+	for (var i=0;i<exp.length;i++){
+	if(checkNumbersRegex.test(exp[i])) {
+		litem.push(exp[i]);
+		
+	}else {
+	   var exactOperator = getOperator(exp[i]);
+	   var op2 = litem.pop();
+	   var op1= litem.pop();
+	   var result = perform(exp[i],op1,op2)
+	  litem.push(result);
+	}
+	}
+	return litem;
+}
+function getOperator(inputVal){
+    console.log('inside getOperator to get the exact operator value ::: ' + inputVal);
+	const o = operators.map((operator) => { operator === inputVal ? operator : ''});
+	return o;
+	console.log('ohh :: ' + o);
+}
+
+function perform(operation,operand1,operand2){
+var result = 0; 
+	switch(operation){
+		case "+" :
+          result =  operand1+operand2;
+          break;
+        case "-" :
+        result = operand1-operand2;
+        break;
+        case "*" :
+        result = operand1*operand2;
+        break;
+	}
+	
+	return result;
+}
+var finalResult = evaluatePostfix(exp);
+console.log('final result = ' + finalResult);
+
+
+Array vs Linked List ::
+
+Arrays are contiguous data strucutre with single slab memory
+Linked List are the non-contagious DS, which has distinch chunk of memory linked with the pointers
+
+
+Array                             Linked list 
+
+- Contagious memory(fixed size )                 - Non contagious memory (dynamic size)
+- Inefficient to do insert / delete              - Efficient to do insert / delete
+- Efficient in Random acess                      - No random access
+- May result in memory waste                     - No memory waste, much efficient way 
+
+For linked list in JAvascript
+
+Refer to https://www.youtube.com/watch?v=9YddVVsdG5A (need key focus to do this )
+
+Hash-Table 
+
+Binary search tree :: Do the programming followed by Linked list programming, but make sure to understand the concept thoroughly  
+
+
+Event propagation ::
+
+Event bubling, event capturing
+
+<html>
+<head></head>
+<body>
+<ul>
+ <li><a href="url-1"><img src="img-url-1" /></a></li>
+ <li><a href="url-2"><img src="img-url-2" /></a></li>
+ <li><a href="url-3"><img src="img-url-2" /></a></li>
+</ul>
+</body>
+</html>
+
+String reverse ::
+
+function reverseString(str) {
+  return (str === '') ? '' : reverseString(str.substring(1)) + str.charAt(0);
+}
+reverseString("hello");
+
+Alogrithm Avg    Worst case
+Space    O(n)   O(n)   
+Search   O(1)   O(n)   
+Insert   O(1)   O(n)   
+Delete   O(1)   O(n)   
+
+- Scan from left to right
+- First check the operator (<operand><operand2><operator>)
+- 
+Binary Search Tree ::
+
+- The tree should be a "Balanced-tree"
+- The tree should be in a sorted format
+- The left side should be lesser, right side should be greater values
+- n-> n/2 -> n/4 ...1 
+BODMAS
+Bracket, orders (exponentials r -> l) , Division & Multiplication (L--> R), addition & subtraction (L -> R)
+
+Infix, Postfix, prefix ::
+
+Infix :: Operator is in between the operands
+Prefix :: Operator(s) are defined first followed by operands (Traverse from Right to left )
+Post-Fix :: Reverse polish notation :: Operators are followed by the operands (Users LIFO), traverse left to right 
+
+Infix		prefix        Postfix
+
+2+3          + 2 3           2 3 +
+a-b          - a b           a b -
+a+b*c        +a*bc           abc*+
+a-b*c        -a*bc           abc*-
+Pre-fix and post-fix are for machine learning
+
+- 2+3 => 2,3 Operands, "+" is the operator 
+
+Reverse Polish notation ::
+
+- Its called post-fix notation, operators follows the operations
+
+Trees ::
+
+Cracking the coding interview  read the book
+
+Red-black-tree
+Avial tree
+B+ tree
+Geeks for geeks 
+Amazon leader-ship principal 
+
+
+
+==================================================================================================================
+
+var a=1
+var b=a
+b=2
+
+var a = {name:"will"}
+
+a.name = "fred";
+
+primittive types
+
+var a=1
+var b=a
+b=2
+
+a still =1
+b = 2
+
+non-primitive
+
+var a = {name : "will"}
+
+var b= a
+b.name ="fred"
+
+a.name ="fred"
+b.name is also "fred"
+
+how to make the object immutable?
+
+var a = {name : "will", age : 35}
+var b = Object.assign({},a,{name:"fred"})
+
+here a = {name : "will", age : 35} ==> immutable
+
+b = {name : "fred", age : 35} 
+
+using concat, we can add items into an array
+
+var a = [0,1,2]
+var b = a.concat(3)
+
+o/p : 
+a = [0,1,2]
+b = [0,1,2,3]
+
+using filter, we can exactly locate the element we want to filter out
+
+var a = [0,1,2]
+var b =a.filter((val) => val !==2)
+var b = [0,1]
+
+o/p :
+
+a = [0,1,2]
+b = [0,1]
+
+Map, filter, reduce are going to get you brand new array object, it wont override the existing ones
+
+
+var  a ={name : "bill", hobbies :["x","y","z"]}
+b = Object.assign({},a,{name:"smith"})
+b.hobbies = a.hobbies.concat("a");
+
+O/p:
+a = {name : "bill", hobbies :["x","y","z"]}
+b = {name : "smith", hobbies :["x","y","z","a"]}
+
+graph qL
+source map
+
+
+
+
+
+	

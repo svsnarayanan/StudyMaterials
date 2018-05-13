@@ -1,0 +1,772 @@
+LinkedInQuestions.htmlQuestions List
+
+Linkedin
+
+-1. Nested List Weight Sum I / II
+-2. Compute the value of an expression in Reverse Polish Notation
+-3. Given a binary tree, write a method to print the tree level by level and zig-zag order
+-4. Write a function to determine if a string is a number without using any built-in function. For ex: "-3.3425","80.0", both of them are number
+-5. Roman to Integer and vice versa
+-6. Shortest Word Distance I / II / III
+-7. Isomorphic strings
+-8. Least common ancestor of two nodes of a binary tree
+-9. TwoSum III
+-10. Implement double pow(double a, int b) without using any already built-in function
+-11. Create a mirror of binary tree / Check whether two binary trees are mirror of each other
+-12. Given an array of integers, find atleast one triplet that can form a triangle
+-13. Merging Intervals / Find coverage of intervals
+-14. Maximum sum subarray
+-15. Maximum product subarray
+-16. Find an element in rotated array (duplicates / no duplicates)
+-17. Find a minimum in rotated array (duplicates / no duplicates)
+-18. Product of array except self
+-19. Find smallest letter greater than target / Search a sorted array for the first element larger than k
+-20. Can place flowers problem
+-21. Build a tree from a list of parent-child relationships
+-22. Given dishes and its ingredients. Group dishes that have common ingredients
+-23. Toggle (Bulb switcher) problem
+-24. Search for a range
+-25. Find second minimum in a binary tree (tournament tree, parent is minimum of children)
+-26. Shuffle a given array such that each position is equally likely
+-27. Binary Tree upside down
+-28. Find the length of a maximum palindrome subset in an array. For example: in 1, 2, 4, 1 the maximum palindrome subset is 1, 2, 1 and the answer is 3
+-29. Create a stack with the usual push() & pop(), but with an additional func getMiddle() that returns the middle element of the stack in constant time
+-30. Can I Win problem
+31. Serialize and deserialize binary tree
+32. Find the sqrt of a number
+33. Determine if braces / parenthesis are properly balanced
+34. Return n closest points on a plane
+35. Paint house
+36. Find if the input is a perfect square
+37. Edit Distance
+38. Climbing Stairs problem (variation: K steps)
+39. Given an input string and a target string, find the minimum substring of the input string that contains all of the characters in the target string
+40. Find all permutations of a string / Generate all permutations of a given sequence of elements
+41. LinkedIn Influencer problem
+42. Given a set of points in cartesian plane, find the line that passes through the maximum number of points
+43. Merge Sorted Arrays
+44. Repeated DNA sequences
+45. Max Stack
+46. Stack using two queues
+47. Find leaves of a binary tree
+48. Factor Combinations
+49. LRU cache implementation
+50. Find maximum depth of a binary tree
+51. Find 3 numbers in an array, that sum or are closest to given sum.
+52. Find connected islands in a matrix of 1s and 0s
+53. Expression operators? Add signs (+, -, *, /) to a string to form target 
+54. Producer Consumer Problem. Thread-safe blocking queue / non-blocking queue
+
+55. TinyURL Design
+56. Design auto complete feature for search
+57. Top trending posts in last 5m, 1H, 1Day
+58. Variations of sliding time window system design for big data systems
+59. Design easy apply feature
+60. Design an elevator system in tallest skyscraper
+61. Design hangman game
+62. Design a month view Calendar
+63. Design a website
+64. Design a scale out webservice
+65. Design a information retrieval (search engine prototype)
+66. Design an E-Commerce platform
+67. Design a distributed system
+68. Design a file system
+69. Design a library
+70. Design a dashboard for service logs stats (sort and aggregate). Scale from 1 to more machines. Discuss async and realtime as different scenarios.
+
+
+
+------------------------------
+
+Linkedin
+
+public interface Triangle {
+ 
+    /**
+     * Three segments of lengths A, B, C form a triangle iff
+     *
+     *      A + B > C
+     *      B + C > A
+     *      A + C > B
+     *
+     * e.g.
+     *  6, 4, 5 can form a triangle
+     * 10, 2, 7 can't
+     *
+     * Given a list of segments lengths algorithm should find at least one triplet of segments that form a triangle (if any).
+     *
+     * Method should return an array of either:
+     * - 3 elements: segments that form a triangle (i.e. satisfy the condition above)
+     * - empty array if there are no such segments
+     */
+    int[] getTriangleSides(int[] segments);
+}
+
+--------------------
+
+/** 
+* Given a nested list of integers, returns the sum of all integers in the list weighted by their depth 
+* For example, given the list {{1,1},2,{1,1}} the function should return 10 (four 1's at depth 2, one 2 at depth 1) 
+* Given the list {1,{4,{6}}} the function should return 27 (one 1 at depth 1, one 4 at depth 2, and one 6 at depth 3) 
+*/ 
+public int depthSum (List<NestedInteger> input) 
+{ // ur implementation here} 
+
+** 
+* This is the interface that represents nested lists. 
+* You should not implement it, or speculate about its implementation. 
+*/ 
+public interface NestedInteger 
+{ 
+/** @return true if this NestedInteger holds a single integer, rather than a nested list */ 
+boolean isInteger(); 
+
+/** @return the single integer that this NestedInteger holds, if it holds a single integer 
+* Return null if this NestedInteger holds a nested list */ 
+Integer getInteger(); 
+
+/** @return the nested list that this NestedInteger holds, if it holds a nested list 
+* Return null if this NestedInteger holds a single integer */ 
+List<NestedInteger> getList(); 
+}
+
+-------------------------
+
+/** Compute the value of an expression in Reverse Polish Notation. Supported operators are "+", "-", "*" and "/".
+ * Reverse Polish is a postfix mathematical notation in which each operator immediately follows its operands.
+ * Each operand may be a number or another expression.
+ * For example, 3 + 4 in Reverse Polish is 3 4 + and 2 * (4 + 1) would be written as 4 1 + 2 * or 2 4 1 + *
+ *
+ * @param ops a sequence of numbers and operators, in Reverse Polish Notation
+ * @return the result of the computation
+ * @throws IllegalArgumentException ops don't represent a well-formed RPN expression
+ * @throws ArithmeticException the computation generates an arithmetic error, such as dividing by zero
+ *
+ * Some sample ops and their results:
+ * ["4", "1", "+", "2.5", "*"] -> ((4 + 1) * 2.5) -> 12.5
+ * ["5", "80", "40", "/", "+"] -> (5 + (80 / 40)) ->  7
+ * ["1"] -> 1
+ * ["1", "2"] -> not valid
+ */
+public double rpn (List<String> ops) throws IllegalArgumentException, ArithmeticException {
+}
+
+-----------------------
+
+public interface PointsOnAPlane {
+
+    /**
+     * Stores a given point in an internal data structure
+     */
+    void addPoint(Point point);
+
+    /**
+     * For given 'center' point returns a subset of 'm' stored points that are
+     * closer to the center than others.
+     *
+     * E.g. Stored: (0, 1) (0, 2) (0, 3) (0, 4) (0, 5)
+     *
+     * findNearest(new Point(0, 0), 3) -> (0, 1), (0, 2), (0, 3)
+     */
+    Collection<Point> findNearest(Point center, int m);
+
+}
+
+------------------------------------------
+
+public interface Intervals {
+ 
+    /**
+     * Adds an interval [from, to] into internal structure.
+     */
+    void addInterval(int from, int to);
+ 
+ 
+    /**
+     * Returns a total length covered by intervals.
+     * If several intervals intersect, intersection should be counted only once.
+     * Example:
+     *
+     * addInterval(3, 6)
+     * addInterval(8, 9)
+     * addInterval(1, 5)
+     *
+     * getTotalCoveredLength() -> 6
+     * i.e. [1,5] and [3,6] intersect and give a total covered interval [1,6]
+     * [1,6] and [8,9] don't intersect so total covered length is a sum for both intervals, that is 6.
+     *
+     *                   _________
+     *                                               ___
+     *     ____________
+     *
+     * 0  1    2    3    4    5   6   7    8    9    10
+     *
+     */
+    int getTotalCoveredLength();
+}
+
+------------------------------------------------------------
+
+/*Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die. Given a flowerbed (represented as an array containing booleans), return if a given number of new flowers can be planted in it without violating the no-adjacent-flowers rule 
+Sample inputs 
+
+Input: 1,0,0,0,0,0,1,0,0 
+
+3 => true 
+4 => false 
+Input: 1,0,0,1,0,0,1,0,0 
+
+1 => true 
+2 => false 
+input: 0 
+
+1 => true 
+2 => false */ 
+
+public boolean canPlaceFlowers(List<Boolean> flowerbed, int numberToPlace) { 
+
+// Implementation here 
+}
+
+---------------------------------------------------------------------
+
+Find two sum from given array in constant time(In java)
+you will be calling store method from main
+at any given point of time if test method is called you should return true or false (if two sum present or not)
+
+public interface TwoSum {
+    /**
+     * Stores @param input in an internal data structure.
+     */
+    void store(int input);
+ 
+    /**
+     * Returns true if there is any pair of numbers in the internal data structure which
+     * have sum @param val, and false otherwise.
+     * For example, if the numbers 1, -2, 3, and 6 had been stored,
+     * the method should return true for 4, -1, and 9, but false for 10, 5, and 0
+     */
+    boolean test(int val);
+}
+
+//hint by interviewer
+//store(1), store(2), store(5)
+// 1, 2, 5 -> key
+// 3(1+2), 6(1+5), 7(2+5) -> key
+
+
+------------------------------------------------------------------------------
+
+Given a list of child->parent relationships, build a binary tree out of it. All the element Ids inside the tree are unique. 
+
+Example: 
+
+Given the following relationships: 
+
+Child Parent IsLeft 
+15 20 true 
+19 80 true 
+17 20 false 
+16 80 false 
+80 50 false 
+50 null false 
+20 50 true 
+
+
+You should return the following tree: 
+50 
+/ \ 
+20 80 
+/ \ / \ 
+15 17 19 16 
+
+
+Function Signature 
+
+/** 
+* Represents a pair relation between one parent node and one child node inside a binary tree 
+* If the _parent is null, it represents the ROOT node 
+*/ 
+public class Relation { 
+public Integer _parent; 
+public Integer _child; 
+public boolean _isLeft; 
+} 
+
+/** 
+* Represents a single Node inside a binary tree 
+*/ 
+public class Node { 
+public Integer _id; 
+public Node _left; 
+public Node _right; 
+} 
+
+/** 
+* Implement a method to build a tree from a list of parent-child relationships 
+* And return the root Node of the tree 
+*/ 
+public Node buildTree (List<Relation> data) 
+{ 
+}
+
+------------------------------------------------------------------
+
+This function determines if the braces ('(' and ')') in a string are properly matched.
+
+Some examples:
+"()()()()" -> true
+"((45+)*a3)" -> true
+"(((())())" -> false
+
+ public boolean matched(String s) {
+    // Implementation here
+ }
+
+----------------------------------------------------------------------
+Phone:
+Suppose you have a list of Dishes, where each dish is associated with a list of ingredients. Group together dishes with common ingredients. 
+
+E.g: 
+Input: 
+"Pasta" -> ["Tomato Sauce", "Onions", "Garlic"] 
+"Chicken Curry" --> ["Chicken", "Curry Sauce"] 
+"Fried Rice" --> ["Rice", "Onions", "Nuts"] 
+"Salad" --> ["Spinach", "Nuts"] 
+"Sandwich" --> ["Cheese", "Bread"] 
+"Quesadilla" --> ["Chicken", "Cheese"] 
+
+Output: ("Pasta", "Fried Rice") ("Fried Rice, "Salad") , ("Chicken Curry", "Quesadilla") ("Sandwich", "Quesadilla") 
+
+-----------------------------------------------------------------
+
+/* This class will be given a list of words (such as might be tokenized
+ * from a paragraph of text), and will provide a method that takes two
+ * words and returns the shortest distance (in words) between those two
+ * words in the provided text. 
+ * Example:
+ *   WordDistanceFinder finder = new WordDistanceFinder(Arrays.asList("the", "quick", "brown", "fox", "quick"));
+ *   assert(finder.distance("fox","the") == 3);
+ *   assert(finder.distance("quick", "fox") == 1);
+ * /
+
+Find minimum distance between two words (order preserved) in a big string. 
+For e.g 1. "hello how are you" - distance between "hello" and "you" is 3. 
+e.g 2. "hello how are hello you" - distance is 1 
+e.g 3. "you are hello" - distance is -1. Order of "hello" and "you" should be preserved. 
+e.g 4. "hello how are hello" - distance is -1 since "you" didnt occur even once.
+
+-------------------------------------------------------------------------
+
+/** 
+* Given a matrix of following between N LinkedIn users (with ids from 0 to N-1): 
+* followingMatrix[i][j] == true iff user i is following user j 
+* thus followingMatrix[i][j] doesn't imply followingMatrix[j][i]. 
+* Let's also agree that followingMatrix[i][i] == false 
+* 
+* Influencer is a user who is: 
+* - followed by everyone else and 
+* - not following anyone himself 
+* 
+* This method should find an Influencer by a given matrix of following, 
+* or return -1 if there is no Influencer in this group. 
+*/ 
+int getInfluencer(boolean[][] followingMatrix)
+
+-------------------------------------------
+
+/** 
+* Return the smallest character that is strictly larger than the search character, 
+* If no such character exists, return the smallest character in the array 
+* @param sortedStr : sorted list of letters, sorted in ascending order. 
+* @param c : character for which we are searching. 
+* Given the following inputs we expect the corresponding output: 
+* ['c', 'f', 'j', 'p', 'v'], 'a' => 'c' 
+* ['c', 'f', 'j', 'p', 'v'], 'c' => 'f' 
+* ['c', 'f', 'j', 'p', 'v'], 'k' => 'p' 
+* ['c', 'f', 'j', 'p', 'v'], 'z' => 'c' // The wrap around case 
+* ['c', 'f', 'k'], 'f' => 'k' 
+* ['c', 'f', 'k'], 'c' => 'f' 
+* ['c', 'f', 'k'], 'd' => 'f' 
+*/
+
+------------------------------------------------------------
+
+/* In "the 100 game," two players take turns adding, to a running 
+total, any integer from 1..10. The player who first causes the running 
+total to reach or exceed 100 wins. 
+What if we change the game so that players cannot re-use integers? 
+For example, if two players might take turns drawing from a common pool of numbers 
+of 1..15 without replacement until they reach a total >= 100. This problem is 
+to write a program that determines which player would win with ideal play. 
+
+Write a procedure, "Boolean canIWin(int maxChoosableInteger, int desiredTotal)", 
+which returns true if the first player to move can force a win with optimal play. 
+
+Your priority should be programmer efficiency; don't focus on minimizing 
+either space or time complexity. 
+*/ 
+
+Boolean canIWin(int maxChoosableInteger, int desiredTotal) { 
+// Implementation here. Write yours 
+
+}
+
+-----------------------------------------------------------------
+
+/**
+* A tournament tree is a binary tree
+* where the parent is the minimum of the two children.
+* Given a tournament tree find the second minimum value in the tree.
+* A node in the tree will always have 2 or 0 children.
+* Also all leaves will have distinct and unique values.
+* 2
+* / \
+* 2 3
+* / \ | \
+* 4 2 5 3
+*
+* In this given tree the answer is 3.
+*/
+class Node {
+  Integer value;
+  Node left, right;
+  Node(Integer value, Node left, Node right) {
+    this.value = value;
+    this.left = left;
+    this.right = right;
+  }
+}
+class Solution {
+  /**
+  * This should return the second minimum
+  * int value in the given tournament tree
+  */
+   public static Integer secondMin(Node root) {
+
+    }
+} 
+
+-------------------------------------------------------------
+
+Given two valid dictionary words of same length, write a function which returns the minimum number of steps to go from the first to the second word. 
+You can change only one character at a time. Also, the word formed at every step should be a valid dictionary word. 
+
+Eg: Provide minimum steps to go from 'cat' to 'dog' 
+cat -> bat -> bet -> bot -> bog -> dog 
+Ans: 5
+
+-----------------------------------------
+
+public interface Permutations { 
+
+/** 
+* Generate all permutations of given sequence of elements. 
+* Return a list of all distinct permutations. 
+* 
+* E.g. 
+* generate([1, 2, 3]) -> [1, 2, 3], [1, 3, 2], [2, 3, 1], [2, 1, 3], [3, 1, 2], [3, 2, 1] 
+*/ 
+vector<vector<int>> generate(vector<int> items); 
+}
+
+------------------------------------------------------
+
+You have n doors in a row that are all initially closed. You make n passes by the doors starting with the first door every time. The first time through you visit every door and toggle the door (if the door is closed, you open it, if its open, you close it). the second time you only visit every 2nd door (door #2, #4, #6. third pass you toggle 3rd, 6th, 9th door. What state are the doors in after the last pass? which doors are open ?  
+
+Given a number n that represents n lockers and n students. All lockers start closed. First student goes and opens all the lockers. Second goes and toggles 2nd, 4th, 6th.. lockers. Third student toggles 3rd, 6th, 9th.. lockers. Print the lockers that remain open after all students pass.
+
+public void lockers(int n) {
+    // Implementation here    
+}
+
+--------------------------------------------------------------------------------------
+
+Implement following interface so that multi-put is atomic. Expect multiple producers and consumers inserting to and extracting from this queue implementation. 
+
+/** 
+* threadSafe bounded blocking queue implementation. Expected to be used in a 
+* Producer->Consumer pattern 
+*/ 
+public interface MultiPutBlockingBoundedQueue<E> { 
+
+/** 
+* Sets the capacity of the buffer. Can be called only once. If called more 
+* than once or if the passed capacity is <= 0, throw an exception. 
+*/ 
+public void init(int capacity) throws Exception; 
+
+/** 
+* Get the next item from the queue throws Exception if not initialized 
+*/ 
+public E get() throws Exception; 
+
+/** 
+* Put the item to the tail of the queue. throws Exception if not 
+* initialized 
+*/ 
+public void put(E obj) throws Exception; 
+
+/** 
+* Put the list of items in an atomic manner. The list can be more than the 
+* capacity throws Exception if not initialized 
+*/ 
+public void multiput(List<E> objs) throws Exception; 
+
+}
+
+-------------------------------------------------------------
+
+Given a binary tree where all the right nodes are leaf nodes, flip it upside down and turn it into a tree with left leaf nodes. 
+
+Keep in mind: ALL RIGHT NODES IN ORIGINAL TREE ARE LEAF NODE.
+
+
+/* for example, turn these:
+ *
+ *        1                 1
+ *       / \                 / \
+ *      2   3            2   3
+ *     / \
+ *    4   5
+ *   / \
+ *  6   7
+ *
+ * into these:
+ *
+ *        1               1
+ *       /               /
+ *      2---3         2---3
+ *     /
+ *    4---5
+ *   /
+ *  6---7
+ *
+ * where 6 is the new root node for the left tree, and 2 for the right tree.
+ * oriented correctly:
+ *
+ *     6                   2
+ *    / \                   / \
+ *   7   4              3   1
+ *        / \
+ *       5   2
+ *            / \
+ *          3   1
+ */
+
+ -------------------------------------------------------------------
+
+ Given a imbalance binary tree, print the leaf nodes then remove those leaf node, print the new leaf nodes until only root node left.
+
+For example:
+
+          1
+         / \
+        2   3
+       / \     
+      4   5    
+Print: [4 5 3], [2], [1]
+
+----------------------------------------------------------------------
+
+Given a sorted array with duplicates and a number, find the range in the form of (startIndex, endIndex) of that number. For example, 
+
+find_range({0 2 3 3 3 10 10}, 3) should return (2,4). 
+find_range({0 2 3 3 3 10 10}, 6) should return (-1,-1). 
+The array and the number of duplicates can be large.
+
+------------------------------------------------------------------------
+
+Write a program that gives count of common characters presented in an array of strings..(or array of character arrays) 
+
+For eg.. for the following input strings.. 
+
+aghkafgklt 
+dfghako 
+qwemnaarkf 
+
+The output should be 3. because the characters a, f and k are present in all 3 strings. Note: The input strings contains only lower case alphabets
+
+---------------------------------------------------
+phone:
+Print an NxM matrix with nw-se diagonals starting at bottom left corner. Ex:
+
+1  2  3  4
+5  6  7  8
+9 10 11 12
+
+The output should be:
+
+9
+5 10
+1 6 11
+2 7 12
+3 8
+4
+
+-------------------------------------------------------
+
+Find all the repeating sub-string sequence of specified length in a large string sequence. The sequences returned i.e. the output must be sorted alphabetically. 
+
+For e.g. 
+
+Input String: "ABCACBABC" 
+repeated sub-string length: 3 
+
+Output: ABC 
+
+Input String: "ABCABCA" 
+repeated sub-string length: 2 
+
+Output: AB, BC, CA
+
+-----------------------------------------------------------
+
+Data Engineer:
+Get the top 10 IP addresses from 1TB data files having semi-structured data using map reduce. (2)
+
+Given a list of employee id and manager id pairs, and given a manager id print/return the manager hierarchy, starting at that manager. For example, given (manager_id, employee_id) as [(1,3), (2,3), (3,4)] and manager_id 4, return {4:[3], 3:[1,2]}. How would you handle the opposite direction, i.e. given an employee_id print the hierarchy of managers
+
+Implement a hive udf - for the given string return a score based on the sentiment words found. (good: 1; average: 0; bad: -1) Ex. good food, bad service = 1 - 1 = 0
+
+------------------------------------------------------------------
+
+You are given an N-Dimensional list with 2 methods:
+i) getDim -> returns the dimensions .e.g [5,4,3].
+ii) getElement([i,j,k]) -> return list[i][j][k] . You have to implement a method to sum all elements in the list.
+
+-----------------------------------------------------------------
+
+Give two sorted lists List<Integer> a and List<Integer> b. 
+Find the Union of these two lists -> the union list should also be sorted 
+the Intersection of these two lists -> Intersection list should also be sorted.
+
+----------------------------------------------------------------
+Phone:
+Find unique integers from list of integers
+
+# Question
+# Write a function that will return an array of integers that occur exactly once in a given array of integers.
+# e.g. For a list [1,2,3,5,2,2,3,4], return [1,5,4] since they appear once (order does not matter).
+
+def once_integers(integers):
+Follow up: 
+Optimize the code if input is sorted.
+
+# What if the input is sorted, such as [1,2,2,2,3,3,4,5], could the algorithm be further optimized
+# (e.g. space complexity)?
+
+def once_integers_sorted(integers):
+
+------------------------------------------------------------
+
+How to randomly select a number in an array? 
+array: [15, 2, 4, 5, 1, -2, 0] 
+
+Follow-up: 
+Given a second array freq where freq[i] represents the occurrence of the ith number in array, how to randomly select a number in array based on the frequency. 
+
+------------------------------------------------------------
+
+Trees and Graphs
+
+Closest K nodes to a target in BST? (Doit in O(n)?)  
+Zig-Zag print binary tree
+Add/Delete from binary tree
+Write an algorithm that determines whether or not two binary trees are equivalent.
+How to find if nodes in graph are exactly 1/2/3 edges apart. how would you distribute graph across machines.
+Implement BST, insert, delete, search. 
+For typical word ladder problem to get the shortest path, BFS has complexity exponential to the word string length. How to optimize?
+
+---------------------------------------------------------------
+
+Arrays and Strings
+
+kth order statistics
+Iterating through a k-dimensional array given size of each dimension in an array.  
+Count the number of occurrences of an element in a sorted array  
+The intersection of two lists, with the output being in a sorted order.
+Sorted character array return next largest character for given input character
+Give a list of numbers, find all non-repearing combination of its element.  
+Given a set of strings, find the k-most frequent occuring strings
+-Search on strings in a constant time complexity.  
+Given an array of words and a length L, format the text such that each line has exactly L characters  
+Find indices start and end for a particular value in a sorted integer array with duplicates  
+Given an array of numbers find the duplicates
+-Given a maximum line length, left right justify a long string. (make spaces evenly distributed between adjacent words)
+Phone: String Rotation. Given two string check if String1 is rotating match for String2
+You have two arrays of integers, where the integers do not repeat and the two arrays have no common integers.
+Word Wrap / String Justification algorithm. 
+Return a list of non-duplicate integers a given array, i.e., given [1,2,3,4,4,3], return [1,2]
+Balanced Partition (http://www.geeksforgeeks.org/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum/)
+
+Given string say ABCGRETCABCG and substring length let us take length as 3, find the count of possible substrings, for example in above string ABC => 2 and BCG => 2 , where CGR and other 3 word length substrings has a count of 1.
+
+There is a particular sequence that only uses numbers 1, 2, 3, 4 and no two adjacent numbers are the same. 
+Write a program that given n1 1s, n2 2s, n3 3s, n4 4s will output the number of such sequences using all these numbers. 
+Output your answer modulo 1000000007 (10^9 + 7).
+
+Given a set of words and a length. You are required to print the words such that the words on each line end almost on the same column and the number of trailing spaces at the end is minimized. 
+
+Given aaa bb cc ddddd and length is 5 print the following output. 
+
+aaa 
+bb cc 
+ddddd
+
+Let x be any integer in the first array, y any integer in the second. Find min(Abs(x-y)). That is, find the smallest difference between any of the integers in the two arrays. Assumptions: Assume both arrays are sorted in ascending order.
+
+------------------------------------------------------------------------------
+
+Given a function Rand01Uniform() which generates a random integer number from [0,1] with a uniform distribution, write a function Rand06Uniform() which generates a random integer number from [0,6] with a uniform distribution.
+
+Shuffle massive dataset that can't be placed to memory  
+  
+Given two linked lists that could potentially have a merge—i.e., at some point during one of the linked lists, the next node is a node in the other list—write an algorithm that determines if two lists merge or not. The lists could also potentially contain a cycle—i.e., an element can loop back around to the head.  
+
+Implement a hashtable and make it thread-safe  
+
+Least common windowing
+ 
+You have bunch of numbers coming in, and a given a window size, how would you save numbers so that you can return number if present in window and provide average for current window.
+
+Design and implement a data structure that can insert, remove, and randomly select an item all in constant time. 
+Design and implement Java iterator for nested containers  
+Design the blacklist. and implement hashmap  
+Software craftsmanship - Describe what quality controls do you suggest for a critical highly available service before deploying to production
+Rest system design. Amazon website design. Read/Write locking. 
+
+-------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3 coding Questions in 1 hour :
+1) Given a binary search tree and a key, if found return 1 else -1.
+2) Given a string find the number of distinct substrings (should optimise time and space complexity)
+3) Given a string finf the number of distinct palindromic substrings(should optimise time complexity)
+
+Interview 1:
+1) Given a boolean expression find the number of ways to paranthasise it so that it evaluates to true
+2) Given n stairs , you climb 1 , 2 or 3 stairs at a time . Find the number of ways to reach the nth step
+
+Interview 2:
+1) Given the pointer to the root of the tree and two values val1 and val2 . Find the length of path between the values val1 and val2 in the binary tree. { handle corner cases where both the values are on the same path}
+
+2) Given a mapping between numbers and alphabets . Find the number of ways to decode a sequence of numbers
+
+ eg: a - 21 b - 2 c - 54 d - 5 e -4 f-1     2154     1) ac     2) ade     3) bfc     4) bfde  4 ways to decode 
+Interview 3:
+1) Given a matrix of 0 s and 1 s Find the number of connected components having 1s
+
+   0 0 1 0 1   0 1 1 0 1   0 0 0 1 1   0 0 1 1 0 
+The above matrix has 2 components
+constraints: Time complexity O(N) space complexity O(1)
+
+2) Given a tree check if it is a binary search tree or not constraints: space complexity O(1)
+
+Interview 4: (HR+Technical)
+
+1) Asked questions on my resume and challenges faced in my project
+2) Showed me wwww.amazon.com page and asked me how to design the backend database so that it supports functions like displaying entire information about a product , its average rating and number of customers who gave each rating etc.
+
+Overall the experience was good and the interviewers were friendly.

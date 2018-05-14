@@ -218,5 +218,94 @@ const sum = (a,b) =>  a+b //if we have single javascript expressions
 sum(1,2)
 
 
+==============
+Class is the blue-print that describes the behavior of the object
+Object is a member or instance of a class, which has property and methods
 
+
+Traditional inheritance in JS ::
+
+function Car(options){
+  this.title=options.title;
+}
+
+function Civic(options){
+  Car.call(this,options);
+  this.color = options.color
+}
+Civic.prototype = Object(Car.prototype);
+Civic.prototype.constructor = Civic;
+
+Civic.prototype.honk = function(){
+  return 'beep-beep'
+}
+
+Car.prototype.drive = function(){
+  
+  return 'so fast'
+}
+const c = new Civic({title:'civic',color:'grey'});
+c.honk()
+c.drive()
+
+
+ES - 6 Class , object and constructor notations 
+
+class CarNew{
+  constructor(options){
+    this.title = options.title;
+  }
+  drivefast(){
+    return 'soooo fast'
+  }
+}
+
+const cn = new CarNew({title:'Honda Civic'})
+cn
+cn.drivefast()
+
+
+Muli-level inheritance 
+
+class MotorVehile{
+  typeofVehicle(){
+    return 'its a car'
+  }
+}
+class Car extends MotorVehile{
+  constructor(options){
+    super();
+    this.title = options.title;
+  }
+  drivefast(){
+    return 'soooo fast'
+  }
+}
+
+class Honda extends Car{
+  constructor(options){
+    super(options);
+    this.color=options.color;
+  }
+  honk(){
+    return 'beep beep'
+  }
+}
+const cn = new Honda({title:'Honda Civic',color:'grey'})
+cn
+cn.typeofVehicle();
+cn.drivefast()
+cn.honk();
+
+
+for of loops
+
+const nums = [1,2,3,4,5];
+let sum=0;
+for(let num of nums){
+  sum +=num;
+}
+
+
+Generators :: Enter and exit a function multiple times
 

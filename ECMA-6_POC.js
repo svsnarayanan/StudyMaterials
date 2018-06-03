@@ -307,5 +307,4 @@ for(let num of nums){
 }
 
 
-Generators :: Enter and exit a function multiple times
 

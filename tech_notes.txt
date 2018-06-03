@@ -1,0 +1,417 @@
+Redux (its a state management tools for JS applications) 
+
+- Store (Reducer, State)
+- Reducer (state, action)
+- Subscribe
+- Dispatch
+
+- Main objective of redux is to store the entire state of an application in one common store
+- avoid props to child components
+
+===================================================================================================================
+
+Babel - transpiler from ES-6 to es-5 
+
+===================================================================================================================
+
+
+React Initial Set-up :: 
+
+1) npm init
+2) npm install react react-dom --save
+3) sudo npm install webpack  webpack-dev-server babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-2 --save-dev
+4) npm install webpack-cli --save-dev (this is needed prior starting the server, becuase it'll always throw an exception to install CLI, to avoid this, we should use this command!
+5) npm start
+
+6) npm i prop-types --save(to define the data types)
+Make sure in web-pack config, module --> rules instead of defining module --> loader
+7) npm install --save react-router (to install react router)
+8) npm install react-router@3.0.5 (For downloading the exact react router, was gettting exceptions)
+
+===================================================================================================================
+
+
+Lifecycle of components
+
+1) ComponentwillMount - Immediately before initial rendering
+2) ComponentdidMount - Immediately after initial rendering
+3) Componentwillreceiveprops - When component receives new props
+4) shouldComponentUpdate = Before rendering, after receiving new props or state
+5) componentwillUpdate - Before rendering, after receiving new props or state
+6) componentdidUpdate - After components updates are flushed into DOM 
+7) componentwillUnmount - Immediately before removing component from DOM
+
+===================================================================================================================
+ 
+
+git ignore file  ::
+
+/node_modules
+/dist
+/.idea
+/npm-debug.log
+
+
+- 
+
+Git commands
+Go to the folder 
+git init
+git add .
+git commit -m "comments"
+git push -u origin master
+
+===================================================================================================================
+
+Things to learn ::
+
+- promise
+- recursions
+- Closures
+- array
+- string manipulation
+- loop array using map, filter, sort
+- JSON
+- Loop through 3 level nested json object
+- Data structure concepts
+- Event bubbling, how to handle?
+- React Material UI
+- React Redux
+
+
+
+===========
+
+
+// is unique
+// i: abc o: true
+// i: abca o: false
+
+var CheckUniqueString = function(ipString){
+  var isUnique = false;
+  var counter = 0
+  
+  for(var i=0;i<ipString.length;i++){
+    for(var j=i+1;j<ipString.length;j++ ){
+      if(ipString[i] ==ipString[j] ) {
+        console.log('match occured');
+        counter++;
+        break;
+      }
+    }
+   
+  }
+    console.log('counter value is :: ' + counter);
+    if(counter == 0) {
+      isUnique  =true;
+    }
+  
+  return isUnique; 
+}
+
+var CheckString = function(ipString) {
+  var isUnique ='';
+  isUnique = ipString.split('').filter(function(val,i,j){
+   return  j.indexOf(val) === i
+  }).join('');
+  console.log(isUnique);
+  
+  if(isUnique.length != ipString.length) {
+     return false;
+  }else { return true; }
+
+  
+}
+console.log('Is the string unique :: ' +  CheckString('abcc o'));
+
+
+<div id="size-selection" hidden>
+ 
+    <input type="radio" name="sizes" value="2S" checked> Small
+    <br>
+    <input type="radio" name="sizes" value="3M"> Medium
+    <br>
+    <input type="radio" name="sizes" value="4L"> large
+  
+<div id="size-selection" hidden>
+ Size selection dialog
+  <form id="variantselection">
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" name="sizes" value="2S" checked>
+    Small
+  </label>
+</div>
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" name="sizes" value="3M" >
+    Medium
+  </label>
+</div>
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" name="sizes" value="4L">
+    Large
+  </label>
+</div>
+
+</form>
+</div>
+
+
+
+<select id="facets">
+    <option value="Size">Size</option>
+    <option value="Color">Color</option>
+    <option value="Quantity">Quantity</option>
+  </select>
+  
+<div class="dropdown show" id="facets">
+  <a class="btn btn-secondary dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Size
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">Size</a>
+    <a class="dropdown-item" href="#">Color</a>
+    <a class="dropdown-item" href="#">Quantity</a>
+  </div>
+</div>
+
+
+<div class="dropdown" id="facets">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Size
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Size</a>
+    <a class="dropdown-item" href="#">Color</a>
+    <a class="dropdown-item" href="#">Quantity</a>
+  </div>
+</div>
+
+
+Redux :: [ https://www.youtube.com/watch?v=93p3LxR9xfM, its very useful ]
+
+- npm i redux react-redux redux-thunk (install this plugins)
+
+
+
+Google maps API npm install --save react-google-maps
+
+
+l0vel0cal
+
+
+AIzaSyA1a6Hno-vhkUqTaToYkyF-cFzhV11eh1M
+
+
+
+let inputArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+
+outputArray = ['Jan', 'Feb', 'Mar', 'Apr', 'abc','May'];
+
+outPutArray = outputArray.map((month) ==> if(month === 'Apr') this.push('abc');break;))
+
+outputArray.splice(4,0,'abc');
+
+
+
+let opArray = inputArray.map((item) ==>  if(item.startsWith('M') ))
+
+
+let complexJsonObj = {
+name: '',
+age: '',
+occupation :{
+companyName: '',
+salary: ''
+}
+}
+
+this.state ({
+  name: '',
+  age: '',
+  occupation :{
+    companyName: '',
+    salary: ''
+  }
+})
+
+this.setState({
+  occupation :{
+    companyName: this.props.UpdatedCompanyName,
+   } 
+})
+
+react-addons-update
+
+complexJsonObj.occupation[].companyName = this.state.value
+
+
+
+
+
+
+
+textbox - that is going accept only alphabets
+button - disabled until there is a valid entry in the textbox
+message - Welcome <contents in the textbox>
+
+<!doctype htm>
+<html language="en">
+<head>
+<title>First PoC !</title>
+<link href="/css/mainStyles.css" rel="stylesheet"/>
+
+
+
+</head>
+<body>
+<div id="mainContainer">
+    <script src="app/bundle.js"></script>
+</div>
+</body>
+</html>
+
+Component-1 ::
+
+
+
+==> Create these following DIV elements in the first component
+==> Specify the CSS for the Input, and button
+==> Function to vallidate on input key press handle events using Regular expressions to accept only alphabets [/^[A-z]+$/ ] 
+==> Upon button click delegate the button click to read the values and render the results
+
+import React from "react";
+import { render }  from "react-dom"
+
+Class firstApp extends React.Component {
+constructor(){
+   super();
+   this.state({
+     btnSubmit : false;
+   })
+}
+onTextKeyPress(e){
+  var regExTextPattern = /^[A-z]+$/ ;
+  var inputText = e.target.value;
+  if(inputText && inputText.test(regExTextPattern)){
+      //enable the button  #btnSubmit
+      this.state.btnSubmit = true;
+     
+  }else {
+    //Show error message 
+    document.getElementbyId('errorText').className="show"
+  }
+  
+}
+
+onSubmitClick(){
+   //Button is enabled and atelast a character is written on the text field
+   //Read the value from text field
+    let txtValue = document.getElementbyId('txtFieldVal').value
+   // Alert them 
+   alert('Welcome' + txtValue);
+   
+}
+
+render(){
+   <div clasName="mainContainer">
+      <input id="txtFieldVal" type="text" onKeypress={(event) => this.onTextKeyPress(event)} onblur="{}"/>
+      <span id="errorText" class="errorMessage hide">Please enter a valid text </span>
+      <button id="btnSubmit" class="btnSubmit" disabled onClick={this.onSubmitClick(event)} currentState = {this.state.btnSubmit}>Submit</button>
+   </div> 
+}
+}
+
+alert('loop :: '+data);
+       var liElm = document.createElement("li");
+         liElm.innerText = data.name;
+         liElm.setAttribute('data-lat',data.coordinates.latitude);
+          liElm.setAttribute('data-lang',data.coordinates.longitude);
+          frag.appendChild(liElm);
+          
+          
+          
+          pElm.appendChild(frag);
+   alert(pElm);
+ https://imgur.com/a/nknFk1V
+ 
+ 
+ Please use this Google doc to code during your interview. To free your hands for coding, we recommend that you use a headset or a phone with speaker option.
+
+Google interview questions Starts ... 
+
+(function(){
+  var a = b = 3;
+})();
+
+
+var myObject = {
+    foo: "bar",
+    func: function() {
+        var self = this;
+        console.log("outer func:  this.foo = " + this.foo);//bar
+        console.log("outer func:  self.foo = " + self.foo);//bar
+        (function() {
+            console.log("inner func:  this.foo = " + this.foo);//undefned
+            console.log("inner func:  self.foo = " + self.foo);//bar
+        }());
+    }
+};
+myObject.func();
+
+//r
+
+
+
+Write a function to reverse a string. Input: “Madam, I'm Adam"
+(abc)
+function revsereString(ipValue){
+//Convert the string into an array elements
+	var splitStr = ipValue.split(‘’); [‘a’,’b’,’c’]
+var strRevArray = splitStr.revese(); [‘c’,’b’,’a’] 
+var finalOp = reveseMethod(splitStr);//strRevArray.join(‘’) || ‘’;(cba)
+return finalOp;
+ 
+}
+function reveseMethod(ipArrayElement){
+var revString = ‘’
+ for(var i=ipArrayElement.length-1;i>=0;i--){
+    revString +=ipArrayElement[i];
+}
+return revstring;
+
+}
+
+
+console.log(‘string reversed :: ‘ + revsereString(‘Madam, I'm Adam’) )
+
+
+
+Design Google Transit
+
+Requirements
+provide a user, either mobile or desktop-based, ability to build a route from any point A to any point B
+
+Timing / Chart which will be provided (What time is the next available shuttle from Point A to Point B)
+Set an Alarm / indicator to the user, who wants to pick the shuttle, 
+Notification, once the shuttle about to arrive arrive at the building (whcih is point A)
+Biker holder / any accesibility guidelines wheel-chair assistance
+
+Google interview questions ends....
+
+
+Visa Coding sessions :: Visa Inc. Front-end Developer Hiring Test - DPD invitation (refer the email with this subject email, 
+
+And this is for Ramesh team, recruiter name is Lindsay peters
+
+
+
+
+
+
+
+
+	

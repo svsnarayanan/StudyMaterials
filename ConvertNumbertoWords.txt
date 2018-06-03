@@ -1,0 +1,84 @@
+function ConvertNumbertoWords(number) {
+
+    //Validates the number input and makes it a string
+    if (typeof number === 'string') {
+        number = parseInt(number, 10);
+    }
+    if (typeof number === 'number' && isFinite(number)) {
+        number = number.toString(10);
+    } else {
+        return 'This is not a valid number';
+    }
+
+    if(number == 0){return "zero";}
+
+   
+    var digits = number.split('');
+    while (digits.length % 3 !== 0) {
+        digits.unshift('0');
+    }
+
+
+    var digitsGroup = [];
+    var numberOfGroups = digits.length / 3;
+    for (var i = 0; i < numberOfGroups; i++) {
+        digitsGroup[i] = digits.splice(0, 3);
+    }
+  
+
+    //Change the group's numerical values to text
+    var digitsGroupLen = digitsGroup.length;
+    var numTxt = [
+        [null, 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'], //hundreds
+        [null, 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'], //tens
+        [null, 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'] //ones
+        ];
+    var tenthsDifferent = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+ 
+    for (var j = 0; j < digitsGroupLen; j++) {
+        for (var k = 0; k < 3; k++) {
+            var currentValue = digitsGroup[j][k];
+            digitsGroup[j][k] = numTxt[k][currentValue];
+            if (k === 0 && currentValue !== '0') { 
+                digitsGroup[j][k] += ' hundred ';
+            } else if (k === 1 && currentValue === '1') { 
+                digitsGroup[j][k] = tenthsDifferent[digitsGroup[j][2]];
+                digitsGroup[j][2] = 0; 
+            }
+        }
+    }
+
+  
+
+    
+    for (var l = 0; l < digitsGroupLen; l++) {
+        if (digitsGroup[l][1] && digitsGroup[l][2]) {
+            digitsGroup[l][1] += '-';
+        }
+        digitsGroup[l].filter(function (e) {return e !== null});
+        digitsGroup[l] = digitsGroup[l].join('');
+    }
+
+  
+
+    //Adds thousand, millions, billion and etc to the respective string.
+    var posfix = [null, 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion'];
+    if (digitsGroupLen > 1) {
+        var posfixRange = posfix.splice(0, digitsGroupLen).reverse();
+        for (var m = 0; m < digitsGroupLen - 1; m++) { //'-1' prevents adding a null posfix to the last group
+            if (digitsGroup[m]) {
+                digitsGroup[m] += ' ' + posfixRange[m];
+            }
+        }
+    }
+
+
+
+    //Joins all the string into one and returns it
+    return digitsGroup.join(' ');
+
+} 
+
+//Call the function  by passing the numbers
+alert(ConvertNumbertoWords(150));

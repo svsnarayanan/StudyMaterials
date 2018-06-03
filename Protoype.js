@@ -144,11 +144,78 @@ String.prototype = "hello";
 }
 
 
+- "use strict"; = get into strict mode 
+
+- cant declare the variable global
+- cannot delete variable / function
+- we cant use let,eval as a variable name (which are reserved for js notations)
+- We cant declare a primitive types without having any default value
+- Primitive data types => boolean, number, string, null, undefined
+typeof(true) =>boolean
+typeof(1) => number
+typeof('x') => string
+typeof(undefined) => undefined, value of the variable is NOT set / variable itself not defined, then js engine returns undefined
+typeof(null) => object, programmer explicitly set a value as null 
+
+null == undefined or undefined == null ==> true
+
+- Non primitive data types => object ({} / new Object())
+
+typeof({}) => object
+
+==(only valye) vs === (value + type)
+
+'' == '0' ==> false
+'0' =='' ==> true
+0 =='0'  ==> true => String (0) => '0' == '0' (type coercion)
+0 === '' ==> false
+0 === '0' ==> false
+0 === 0 ==> true
+
+variable hoisting ::
+
+console.log(a);
+var a=1;
+
+here in js, it just moves the function and variable declaration at the top
+
+var a;
+console.log(a);
+a=1;
+
+foo();
+
+function foo(){
+	console.log('foo');
+}
 
 
+here it'll console the statements, becuase in JS it pushes the function to the top
+iife :: immediately invoke function 
 
 
+function closurePOC(t){
+    var y = "hello  " + t;
+   return function(){ console.log(y);}
+}
+//closurePOC('sathya is here')();
+var cf = closurePOC('abc');
+cf
 
+function xx(){
+    var t=10;
+    return function(){
+        console.log('prinx' + t);
+    }
+}
+xx()()
 
+var foo = [];
+for(var ii=0;ii<10;ii++){
+    foo[ii]=function(){ return ii };
+}
+console.log(foo[1]());
+console.log(foo[3]());
+console.log(foo[5]());
 
 

@@ -248,6 +248,7 @@ Post-fix notation Coding (Reverse polish notation ) ::
 
 var exp = '23*54*+9-';
 var checkNumbersRegex = /^\d+$/;
+var operators = /^[\-*\/\(\)]*$/;
 var operators =["+","-","*","%","/"];
 var litem = [];
 
@@ -333,9 +334,20 @@ Event bubling, event capturing
 String reverse ::
 
 function reverseString(str) {
-  return (str === '') ? '' : reverseString(str.substring(1)) + str.charAt(0);
+
+
+var s = ''
+if(str === ''){
+	return s;
 }
-reverseString("hello");
+else{
+	s = reverseString(str.substring(1)) + str.charAt(0);
+	console.log('str'+str);
+}
+return 'value of s  :: ' + s;
+  //return (str === '') ? '' : reverseString(str.substring(1)) + str.charAt(0);
+}
+reverseString("hell");
 
 Alogrithm Avg    Worst case
 Space    O(n)   O(n)   
@@ -460,7 +472,22 @@ graph qL
 source map
 
 
+Hashtable :: https://www.youtube.com/watch?v=F95z5Wxd9ks
 
 
+Array scenarios ::
 
+1) Sum of array elements
+2) highest of array elements
+3) 2 dimensional arrays, [{"fname":"sathya","lname":"ven"},{"fname":"abc","lname":"ven"},{"fname":"xyz","lname":"ven"},{"fname":"abc","lname":"xyz"}], now print the fname, whose lname are matching
+4) return true / false if the character in an array is repeating (abc c0)// t (abc def) / f
+5) print the 2 dimensional array 
+1 4 7
+2 5 8
+3 6 9
+
+print as an array 1,2,3,4,5,6,7,8,9
+
+9) input shuld be a number and it should return array, say if input is 5, then output should be [1,2,3,4,5]
+10) 
 	

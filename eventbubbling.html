@@ -25,7 +25,128 @@ var p = document.getElementById('parentContainer'),
   	e.stopPropagation();//This will stop propagating to parent click-event
   	console.log('child clicked');
   }); //Enable capturing phase
+  //Attaching an event to Body
+  document.addEventListener('click',function(e){
+    console.log('body clicked');
+  });
+
+  /*Concept of promise starts here */
+
+  let fnA = function(){
+    return new Promise(function(resolve,reject){
+      resolve('Executed Function-A');
+    })
+  }
+
+  let fnB = function(d){
+    return new Promise(function(resolve,reject){
+      resolve(d+'Executed Function-B');
+    })
+  }
   
+  fnA().then(function(d){
+    return fnB(d);
+  }).then(function(e){
+    console.log('executed both :: ' + e);
+  })
+
+  let b = new Promise(function(resolve,reject){
+    let isSuccess = false;
+    if(isSuccess) {
+      resolve('yup its success');
+    }else{
+      reject('sorry, something went wrong');
+    }
+  });
+
+  b.then(function(d){
+    console.log('we got the result now and it is :: ' + d)
+  }).catch(function(e){
+    console.log('oh no, something is wrong' + e);
+  })
+
+  var cl = 3;
+  var clfn = function(){
+    var clo = 2;
+    return clo + cl;
+  }
+  console.log('closure example' + clfn());
+  console.dir(clfn);
+
+  function x(){
+    console.log('alerting x');
+    function insideX(){
+      console.log('alerting inside X');
+    }
+    return insideX;
+  }
+  x();
+
+  /* Hash table concept starts */
+
+  var createHashIndex = function(strVal, maxLimit){
+    var hash = 0;
+    for(var i=0;i<strVal.length;i++){
+      console.log(strVal.charCodeAt(i));
+      hash +=strVal.charCodeAt(i);
+    }
+
+    return hash % maxLimit;
+  }
+
+
+
+  let hTab = function(){
+    let bucketStore = [];
+    const storeLimit = 10;
+
+    this.print = function(){
+      console.log(bucketStore);
+    }
+    this.add =function(k,v){
+      //Step-1, get the index, where  we need to store the value
+      var currIdx = createHashIndex(k,storeLimit);
+      if(bucketStore[currIdx] === undefined){
+        bucketStore[currIdx] =[[k,v]];
+      }else{
+        let isInserted = false;
+        for(var i=0;i<bucketStore[currIdx].legth;i++){
+          if(bucketStore[currIdx][i][0] === k){
+            bucketStore[currIdx][i][1]  = v;
+            isInserted = true;
+           }
+        }
+        if(!isInserted){
+          bucketStore[currIdx].push([k,v]);
+        }
+      }
+      console.log('Current index :: ' +  currIdx+ 'Bucket store '  + bucketStore);
+
+    }
+    this.remove = function(key){
+
+    }
+    this.lookup = function(key){
+
+    }
+  }
+
+  let fhash = new hTab();
+
+
+  console.log('calling hashtable-1 :: ' + fhash.add('sathya',10));
+  console.log('calling hashtable-2 :: ' + fhash.add('sathya',10));
+  console.log('calling hashtable-2 :: ' + fhash.add('sathya',11));
+  console.log('calling hashtable-2 :: ' + fhash.add('nar',11));
+  /* Hash table concept ends */
+
+  function onScroll(){
+    var defaultCount  = 50; 
+    var getCurrentScrollPosition = window.scrollY;
+    var getOffset = Math.round(getCurrentScrollPosition / defaultCount);//here 50 is the number items we display
+    var nextOffsetRange = defaultCount * getOffset; //e.g 50 *2 = 100, to fetch next set of records and display it on UI
+    //Please re-render the next set of elements in the DOM
+  }
 /* 
 
 - Event capturing will start from parent to child.
@@ -36,6 +157,8 @@ var p = document.getElementById('parentContainer'),
 - event.stopPropagation ==> Stop event bubbling
 
 */
+
+/* https://jsfiddle.net/zogm90r6/14/ */
 
 </script>
 </body>

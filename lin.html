@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Hello, world!</title>
+	<style>
+		#mainCheckContainer {
+			border: 2px solid #333;
+			width: 50%;
+			height: 50%;
+			padding: 20px;
+			overflow: auto;
+		}
+
+		#mainCheckContainer .userInfo {
+			width: 60%;
+			float: left;
+		}
+
+		#mainCheckContainer .dateInfo {
+			width: 30%;
+			float: right;
+            margin-top:20px;
+		}
+
+		#mainCheckContainer .dateTxt {
+			text-decoration: underline;
+			font-style: italic
+		}
+
+		#mainCheckContainer .CheckDetails {
+			list-style-type: none;
+			display: inline-block;
+			float: left;
+			margin: 0;
+			padding: 0;
+			width: 100%
+		}
+
+		#mainCheckContainer .CheckDetails li {
+			border-bottom: 2px solid #d2d2d2;
+		}
+	    .floatRight { float:right;}
+	</style>
+</head>
+
+<body>
+	<section id="mainCheckContainer">
+		<div class="userInfo">
+			<strong>John Smith</strong>
+			<div>123 First Street</div>
+			<div>San Jose, California 95112</div>
+		</div>
+		
+		<div class="dateInfo">
+			<strong>Date: </strong>
+			<span class="dateTxt">01/01/2018</span>
+		</div>
+		
+		<ul class="CheckDetails">
+			<li>
+				<span><strong>Pay to : </strong>Peter Pan </span>
+				<span class="floatRight"><strong>Amount :</strong>1,234</span>
+			</li>
+			<li> One thousand two hundred and thirty four</li>
+			<li>
+				<strong>Memo : </strong> 
+                <span class="floatRight">Water bill. Anthony C..</span>
+			</li>
+		</ul>
+	</section>
+</body>
+
+</html>

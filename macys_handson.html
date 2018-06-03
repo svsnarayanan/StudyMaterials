@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Macy's Handson Excercise </title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+    <style>
+      body {
+        padding: 10px !important;
+      }
+
+      .red {
+        height: 25px;
+        width: 25px;
+        background-color: #cc0000;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+      }
+
+      .green {
+        height: 25px;
+        width: 25px;
+        background-color: #228B22;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+      }
+
+      .blue {
+        height: 25px;
+        width: 25px;
+        background-color: #0000ff;
+        border-radius: 50%;
+        position: relative;
+      }
+
+      .tick {
+        height: 6px;
+        width: 3px;
+        border: solid #FFFFFF;
+        border-width: 0px 2px 2px 0px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        display: block;
+        margin-left: 10px;
+        margin-top: 7px;
+        position: absolute;
+      }
+
+      ul.colorSwatches li {
+        list-style-type: none;
+        float: left;
+        margin-left: 3px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>This is Backbone Demo.</h1>
+    <div class="conatainer" id="container">
+      <!-- Add a product component with image of your choice -->
+      Product : Nice dress for all ocassions !
+
+      <br>
+      <br>
+
+      <select id="facets">
+    <option value="Size">Size</option>
+    <option value="Color">Color</option>
+    <option value="Quantity">Quantity</option>
+  </select>
+    </div>
+
+    <div id="size-selection" hidden>
+
+      <form id="variantselection">
+        <div class="form-check">
+          <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="sizes" value="2S" checked>
+    Small
+  </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="sizes" value="3M" >
+    Medium
+  </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="sizes" value="4L">
+    Large
+  </label>
+        </div>
+
+      </form>
+    </div>
+    <div id="color-selection" hidden>
+      <ul class="colorSwatches">
+        <li class="red">
+          <li>
+            <li class="green">
+              <li>
+                <li class="blue">
+                  <li>
+      </ul>
+    </div>
+    <div id="quantity-selection" hidden>
+      <div class="input-group" style="width:150px;margin-top:5px;">
+        <span class="input-group-btn">
+              <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[2]" id="stepperDecrement">
+                <span class="glyphicon glyphicon-minus"></span>
+        </button>
+        </span>
+        <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100" id="qtyText">
+        <span class="input-group-btn">
+              <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]" id="stepperIncrement">
+                  <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        </span>
+      </div>
+    </div>
+    <br />
+    <button id="next" type="button" class="btn btn-primary"> Next </button>
+    <div id=shipaddress hidden>
+      <h2>
+        Shipping Address
+      </h2>
+      <form data-toggle="validator" role="form" class="registerForm">
+      <div class="form-group">
+      <div>
+	    <label for="inputName" class="control-label">AddressOne *</label>
+    	<input type="text" class="form-control" name="address1" id="address1" placeholder="Address1" required autofocus>
+      </div>
+      <div>
+         <label for="inputName" class="control-label">AddressTwo * </label>
+    	<input type="text" class="form-control" id="address2" placeholder="Address2" required autofocus>
+      </div>
+      <div>
+         <label for="inputName" class="control-label">City *</label>
+    	<input type="text" class="form-control" id="city" placeholder="City" required autofocus>
+      </div>
+      <div>
+        <label for="inputName" class="control-label">State *</label>
+    	<input type="text" class="form-control" id="State" placeholder="State" required autofocus>
+      </div>
+      <div>
+       <label for="inputName" class="control-label">ZipCode *</label>
+    	<input type="number" class="form-control" id="zipcode" placeholder="zipcode" required autofocus>
+      </div>
+      <div>
+      <br />
+          <button id="finish" type="button" class="btn btn-primary"> Finish </button>
+      </div>
+      </div>
+      </form>
+    </div>
+
+    <br>
+    <br>
+    <div id=analyticsinfo hidden>
+      Selected product:
+      <br> {Product information}
+      <br>
+      <br> Will be shipped to :
+      <br> {Shipping information}
+    </div>
+    <script>
+    
+    var variantsSelectedModel = {
+  variantName: '', //Eg Size / color / Qty
+  variantValue: ''
+}
+var shippingAddressModel = {
+  addr1: '',
+  addr2: '',
+  city: '',
+  state: '',
+  zipCode: ''
+}
+$('#size-selection').show();
+
+$('#facets').on('change', function() {
+
+  $('#size-selection').hide();
+  $('#color-selection').hide();
+  $('#quantity-selection').hide();
+
+  if (this.value == 'Size') {
+    $('#size-selection').show();
+  } else if (this.value == 'Color') {
+    $('#color-selection').show();
+  } else {
+    $('#quantity-selection').show();
+  }
+})
+
+$('#next').on('click', function() {
+  var getSelectedSwatch = $('#facets').val();
+  fetchSelectedSwatchValue(getSelectedSwatch);
+  $('#shipaddress').show();
+})
+
+fetchSelectedSwatchValue = function(getSelectedSwatch) {
+  switch (getSelectedSwatch) {
+    case "Color":
+      /*Color Swatch Selected by the user */
+      var getColor = $('#color-selection .colorSwatches li').has('span').attr('class');
+      updateSwatchModal('Color', getColor);
+      break;
+    case "Quantity":
+      /*Quantity Swatch Selected by the user */
+      updateSwatchModal('Quantity', $('#qtyText').val());
+      break;
+    default:
+      /*Size Swatch Selected by the user */
+      updateSwatchModal('Size', $('#size-selection input:checked').val());
+      break;
+  }
+}
+
+function updateSwatchModal(x, y) {
+  variantsSelectedModel.variantName = x;
+  variantsSelectedModel.variantValue = y;
+  console.log('updateSwatchModal :: ' + variantsSelectedModel.variantName + ' :: ' + variantsSelectedModel.variantValue);
+}
+
+//Get the selected color from the color swatch
+$('#color-selection .colorSwatches li').on('click', function(e) {
+  var colorSelected = $(this).attr('class');
+  var markSelected = "<span class='tick'></span>";
+  $(this).siblings().find('span').remove();
+  $(this).append(markSelected);
+  variantsSelectedModel.variantName = 'Color';
+  variantsSelectedModel.variantValue = colorSelected;
+});
+
+//Event handler for the quantity stepper
+$('#quantity-selection #stepperDecrement,#quantity-selection #stepperIncrement').on('click', function(e) {
+  var actionTaken = $(this).attr('data-type');
+  var initialTextValue = $('#qtyText').val();
+  if (actionTaken == "plus") {
+    initialTextValue++;
+    $('#qtyText').val(initialTextValue);
+  } else {
+    if (initialTextValue != 1) {
+      initialTextValue--;
+      $('#qtyText').val(initialTextValue);
+    }
+  }
+});
+
+//Handle final finish button click
+$('#finish').on('click', function() {
+	if(validateAddressFields()){
+	  $('#analyticsinfo').show();
+    }
+  // Display the information picked up above.
+  showFinalResults();
+})
+
+ //address1,address2,city, state, zip  
+ function validateAddressFields(){
+ var getAddress1 = $('#address1').val(),
+     getAddress2 = $('#address2').val(),
+     getCity = $('#city').val(),
+     getState = $('#State').val(),
+     getZip = $('#zipcode').val(),
+     isaValidForm = false;
+    
+    if(getAddress1.length==0 || getAddress2.length==0 || getCity.length==0 || getState.length==0 || getZip.length==0){
+   		 alert('please enter all the above form fields');
+    }else{ 
+         /* Set the Shipping address modal */
+        shippingAddressModel.addr1 = getAddress1;
+		shippingAddressModel.addr2 = getAddress2
+		shippingAddressModel.city = getCity;
+		shippingAddressModel.state = getState;
+		shippingAddressModel.zipCode = getZip;
+
+         isaValidForm = true; 
+    }
+    
+    return isaValidForm;
+ 
+ }
+ 
+ function showFinalResults(){
+ var updateResult = 'Selected product ' +   variantsSelectedModel.variantName + ' ::  ' +   variantsSelectedModel.variantValue  ;
+     updateResult += 'Shipping Address :: ' + shippingAddressModel.addr1+','+  shippingAddressModel.addr2+','+shippingAddressModel.city+','+shippingAddressModel.state +','+shippingAddressModel.zipCode;
+ $('#analyticsinfo').text(updateResult);
+ 
+ }
+</script>
+  </body>
+  
+  
+
+</html>

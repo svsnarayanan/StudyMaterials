@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Uber Interview</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body style="text-align:center">
+    <div id="header" style="margin-bottom:20px; font-size: 22px">
+        Uber Timer
+    </div>
+    <div id="container">
+        <!-- This element's contents will be replaced with your component. -->
+        <div id="countdown-timer" style="margin-bottom:20px; font-size: 22px; color: red">
+            <span class="hour" id="hour"></span>:<span class="minute" id="minute"></span>:<span class="second" id="second"></span>
+        </div>
+        <div class="buttons">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+  var hours = document.getElementById('hour');
+   var minute = document.getElementById('minute');
+   var second = document.getElementById('second');
+   var btnReset = document.getElementById('reset');
+   var btnStop = document.getElementById('stop');
+   var btnStart = document.getElementById('start');
+   var countDown ;
+  var defaultValue = { h :0,m:0,s:0};
+    function TimerCountDown(h,m,s){
+    	this.h = h;
+    	this.m = m;
+    	this.s = s;
+
+    	this.display = function(){
+    		defaultValue.h = hours.textContent = this.formatNumbersBy2digit(this.h) +"h ";
+    		defaultValue.m = minute.textContent = this.formatNumbersBy2digit(this.m)+"m ";
+    		defaultValue.s = second.textContent = this.formatNumbersBy2digit(this.s)+"s ";
+		}
+		this.formatNumbersBy2digit = function(n){
+			return n > 9 ? "" + n: "0" + n;
+		}
+		this.reset =function(){
+			console.log('constructor >  reset button clicked');
+			this.h = defaultValue.h;
+			this.m = defaultValue.m;
+			this.s = defaultValue.s;
+			this.display();
+		}
+		this.stop = function(){
+			console.log('constructor > stop button clicked');
+		}
+		this.start = function(){
+			console.log('constructor > start button clicked');
+			var currentTime = Date.now();
+			var tillThen = currentTime + (this.s * 1000) +(this.m * 60 * 1000) + (this.h * 60 * 60 * 1000);
+			countDown = setInterval(function(){
+					var secondsLeft = Math.round((tillThen - Date.now())/1000);
+					var minutesLeft = Math.floor(secondsLeft / 60); 
+					var hoursLeft = Math.floor(minutesLeft / 60);
+					if(secondsLeft < 0){
+							console.log(secondsLeft);
+							clearInterval(countDown);
+							return;
+					}
+					displayByInterval(hoursLeft,minutesLeft,secondsLeft);
+					
+					
+					
+			},1000);
+
+		}
+		this.display();
+
+    };
+
+   
+    var initTimer = new TimerCountDown(0,1,3);
+
+     function displayByInterval(h,m,s){
+    	hours.textContent = initTimer.formatNumbersBy2digit(h) +"h ";
+    	minute.textContent = initTimer.formatNumbersBy2digit(m)+"m ";
+    	second.textContent = initTimer.formatNumbersBy2digit(s)+"s ";
+
+    }
+
+   	btnReset.addEventListener('click',function(){
+   		initTimer.reset();
+  		
+  	});
+  	btnStop.addEventListener('click',function(){
+  		initTimer.stop();
+  		
+  	});
+  	btnStart.addEventListener('click',function(){
+  		initTimer.start();
+  	});
+    </script>
+</body>
+</html>
